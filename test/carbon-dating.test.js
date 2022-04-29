@@ -54,7 +54,7 @@ describe('Carbon dating', () => {
 
       if (isLogCalculated) {
         it.optional('basic examples', () => {
-          assert.equal(dateSample('3'), 13305);
+          assert.equal(dateSample('315/3'), 13305);
           assert.equal(dateSample('1'), 22387);
           assert.equal(dateSample('9'), 4223);
           assert.equal(dateSample('11'), 2564);
