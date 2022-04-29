@@ -17,19 +17,24 @@ function getSeason(date) {
   let spring = ['Mar', 'Apr', 'May'];
   let summer = ['Jun', 'Jul', 'Aug'];
   let autumn = ['Sep', 'Oct', 'Nov'];
-  let srt = 'Unable to determine the time of year!';
-  let arr = date.toString().split(' ');
+  let srt = null;
+  let arr = null;
 
-  if (Object.prototype.toString.call(date) === '[object Date]') {
-    winter.forEach((el) => (el === arr[1] ? (srt = 'winter') : false));
-    spring.forEach((el) => (el === arr[1] ? (srt = 'spring') : false));
-    summer.forEach((el) => (el === arr[1] ? (srt = 'summer') : false));
-    autumn.forEach((el) => (el === arr[1] ? (srt = 'autumn') : false));
+  if (arguments[0] === undefined) {
+    return 'Unable to determine the time of year!';
+  } else {
+    arr = date.toString().split(' ');
   }
 
-  // if (!Array.isArray(arr) || arr[1] === undefined) {
-  //   return false;
-  // }
+  if (Object.prototype.toString.call(date) === '[object Date]') {
+    winter.forEach((el) => (el == arr[1] ? (srt = 'winter') : false));
+    spring.forEach((el) => (el == arr[1] ? (srt = 'spring') : false));
+    summer.forEach((el) => (el == arr[1] ? (srt = 'summer') : false));
+    autumn.forEach((el) => (el == arr[1] ? (srt = 'autumn') : false));
+  } else {
+    throw new Error('Invalid date!');
+  }
+
   return srt;
 }
 
